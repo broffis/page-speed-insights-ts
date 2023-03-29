@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "moduleResolution": "node",
+    "inlineSourceMap": true,
+    "pretty": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es5", "es6", "esnext.asynciterable"],
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "allowUnusedLabels": false,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "preserveConstEnums": true
+  },
+  "exclude": ["node_modules", "**/coverage/*", "./dist"]
+}

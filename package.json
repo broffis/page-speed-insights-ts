@@ -1,0 +1,29 @@
+{
+  "name": "page-speed-insights-ts",
+  "version": "1.0.0",
+  "description": "Page Speed Insights Script",
+  "main": "index.js",
+  "scripts": {
+    "run": "tsc && node dist/psi.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/broffis/page-speed-insights-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/broffis/page-speed-insights-ts/issues"
+  },
+  "homepage": "https://github.com/broffis/page-speed-insights-ts#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-fetch": "^2.6.9",
+    "readline-sync": "^1.4.10"
+  }
+}
