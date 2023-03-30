@@ -56,3 +56,42 @@ export type CalculatedReportData = {
   averageValue: number;
   numericUnit: NumericUnit;
 };
+
+type MetricLabel = "FCP" | "LCP" | "TTI" | "FID" | "CLS" | "TFB" | "TBT";
+type DisplayValue = "ms" | "s" | null;
+
+export type ReadableMetric = {
+  label: MetricLabel;
+  displayValue: DisplayValue;
+};
+
+enum MetricLabels {
+  FCP = "FCP",
+  LCP = "LCP",
+  TTI = "TTI",
+  FID = "FID",
+  CLS = "CLS",
+  TFB = "TFB",
+  TBT = "TBT",
+}
+
+export type ReadableMetrics = {
+  [key: string]: ReadableMetric;
+};
+
+export type MetricName =
+  | "firstContentfulPaint"
+  | "largestContentfulPaint"
+  | "timeToInteractive"
+  | "firstInputDelay"
+  | "cumulativeLayoutShift"
+  | "timeToFirstByte"
+  | "totalBlockingTime";
+
+export type FormattedOutput = {
+  [key in MetricLabels]: string;
+};
+
+export type FormattedTotalsReturn = FormattedOutput & {
+  url: string;
+};

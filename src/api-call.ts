@@ -41,8 +41,8 @@ export const apiCall = async (
     });
 };
 
-const setUpQuery = (testUrl: string, device: Device) => {
-  const url = encodeURIComponent(testUrl);
+const setUpQuery = (slug: string, device: Device) => {
+  const url = encodeURIComponent(`https://www.build.com${slug}`);
   const api = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
   const parameters = {
     url,

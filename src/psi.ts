@@ -1,11 +1,14 @@
 import readline from "readline-sync";
 
 import { apiCall } from "./api-call";
-import { ContainedLighthouseData, ReportData } from "./types";
+import { ContainedLighthouseData, FormattedTotalsReturn } from "./types";
 import { calculateValues } from "./calculate";
 
 const pages = {
-  showroom: "https://www.build.com/showroom",
+  showroom: "/showroom",
+  home: "/",
+  "product summary": "/product/summary/433454",
+  other: "",
 };
 
 const devices = {
@@ -15,33 +18,52 @@ const devices = {
 
 export type Device = "MOBILE" | "DESKTOP";
 
-const run = async (): Promise<ReportData> => {
+const run = async (): Promise<FormattedTotalsReturn | null> => {
   const times = parseInt(
     readline.question(
-      "How many times do you want to run the test? (Max of 10): "
+      "How many times do you want to run the test? (Max of 20): "
     )
   );
 
   const page_options = Object.keys(pages);
-  const selected_page_index: number = readline.keyInSelect(
+  const selected_page_index = readline.keyInSelect(
     page_options,
     "Which page would you like to test?"
   );
 
+  let selected_page_url: string;
+  let pageTestMsg: string;
+
+  if (selected_page_index === -1) {
+    return null;
+  }
+
+  if (page_options[selected_page_index] == "other") {
+    selected_page_url = readline.question(
+      "What page would you like to test? Please enter only the slug with the slash (/) to start"
+    );
+
+    pageTestMsg = "";
+  } else {
+    selected_page_url = pages[page_options[selected_page_index]];
+    pageTestMsg = `${page_options[selected_page_index]} page`;
+  }
+
   const device_options = Object.keys(devices);
-  const selected_device_index: number = readline.keyInSelect(
+  const selected_device_index = readline.keyInSelect(
     device_options,
     "Which device should we use?"
   );
 
+  if (selected_device_index === -1) {
+    return null;
+  }
+
   const selected_device: Device =
     devices[device_options[selected_device_index]] || "MOBILE";
 
-  const selected_page_url = pages[page_options[selected_page_index]];
   console.log(
-    `Okay, testing the ${page_options[
-      selected_page_index
-    ].toUpperCase()} page using url: ${selected_page_url} on ${selected_device} ${times} on times`
+    `Okay, testing ${pageTestMsg} using url: ${selected_page_url} on ${selected_device} ${times} on times`
   );
 
   const totalData: ContainedLighthouseData = {
@@ -77,7 +99,6 @@ const run = async (): Promise<ReportData> => {
       totalData.timeToFirstByte.push(timeToFirstByte);
       totalData.totalBlockingTime.push(totalBlockingTime);
     }
-    console.log(`run: ${i}`);
     i++;
   } while (i < times);
   const output = calculateValues(totalData);
