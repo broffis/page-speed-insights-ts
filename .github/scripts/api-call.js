@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 
-dotenv.config();
+// dotenv.config();
 
 const api_key = process.env.PAGE_SPEED_INSIGHTS_API_KEY;
 
