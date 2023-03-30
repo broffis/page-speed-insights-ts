@@ -3,8 +3,6 @@ name: "PSI Runner"
 on:
   pull_request:
 
-concurrency:
-
 jobs:
   run-psi:
     name: Run PageSpeed Insights
