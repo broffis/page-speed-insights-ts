@@ -25,4 +25,4 @@ jobs:
         with:
           script: |
             const run = require('.github/scripts/psi.js');
-            run();
+            run({ github, context });
