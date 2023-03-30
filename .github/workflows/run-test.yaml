@@ -1,0 +1,30 @@
+name: "PSI Runner"
+
+on:
+  pull_request:
+
+concurrency:
+
+jobs:
+  run-psi:
+    name: Run PageSpeed Insights
+    runs-on: ubuntu-latest
+    outputs:
+      psi: ${{ steps.run-psi.outputs.psi-values }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: |
+          rm package*
+          cd  .github/scripts
+          npm i node-fetch@2
+      - id: run-psi
+        uses: actions/github-script@v6
+        env:
+          PAGE_SPEED_INSIGHTS_API_KEY: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY}}
+        with:
+          script: |
+            const run = require('.github/scripts/psi.js');
+            run();
