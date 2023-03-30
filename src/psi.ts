@@ -3,6 +3,7 @@ import readline from "readline-sync";
 import { apiCall } from "./api-call";
 import { ContainedLighthouseData, FormattedTotalsReturn } from "./types";
 import { calculateValues } from "./calculate";
+import { time } from "console";
 
 const pages = {
   showroom: "/showroom",
@@ -24,6 +25,10 @@ const run = async (): Promise<FormattedTotalsReturn | null> => {
       "How many times do you want to run the test? (Max of 20): "
     )
   );
+
+  if (!times) {
+    return null;
+  }
 
   const page_options = Object.keys(pages);
   const selected_page_index = readline.keyInSelect(
