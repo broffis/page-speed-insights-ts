@@ -31,4 +31,4 @@ After install, operation is pretty straightforward
 npm run
 ```
 
-The terminal will give you a couple prompts: number of runs, page to test, and device to be used. After a few moments you will get an output in your terminal of the test run. Note: the more times you run the test, the longer this will take
+The terminal will give you a couple prompts: number of runs, page to test, and device to be used. You will get a confirmation prompt with your inputs. After a few moments you will get an output in your terminal of the test run. Note: the more times you run the test, the longer this will take
