@@ -5,7 +5,7 @@ export type TotalRunData = {
 type NumericUnit = "millisecond" | "unitless";
 type ScoreDisplayMode = "numeric" | "binary";
 
-export type LighthouseData = {
+export type ContainedLighthouseData = {
   id: string; // => ID will be the page url
   firstContentfulPaint: DataRunOutput[];
   largestContentfulPaint: DataRunOutput[];
@@ -14,6 +14,17 @@ export type LighthouseData = {
   cumulativeLayoutShift: DataRunOutput[];
   timeToFirstByte: DataRunOutput[];
   totalBlockingTime: DataRunOutput[];
+};
+
+export type LighthouseData = {
+  id: string; // => ID will be the page url
+  firstContentfulPaint: DataRunOutput;
+  largestContentfulPaint: DataRunOutput;
+  timeToInteractive: DataRunOutput;
+  firstInputDelay: DataRunOutput;
+  cumulativeLayoutShift: DataRunOutput;
+  timeToFirstByte: DataRunOutput;
+  totalBlockingTime: DataRunOutput;
 };
 
 export type DataRunOutput = {

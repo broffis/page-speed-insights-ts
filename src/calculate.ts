@@ -1,11 +1,11 @@
 import {
   CalculatedReportData,
+  ContainedLighthouseData,
   DataRunOutput,
-  LighthouseData,
   ReportData,
 } from "./types";
 
-export const calculateValues = (data: LighthouseData): ReportData => {
+export const calculateValues = (data: ContainedLighthouseData): ReportData => {
   const {
     id,
     firstContentfulPaint: fcp,
@@ -31,9 +31,11 @@ export const calculateValues = (data: LighthouseData): ReportData => {
 
 const calculateMetricValue = (data: DataRunOutput[]): CalculatedReportData => {
   let total = 0;
-
-  console.log({ data });
-  data.forEach((d) => (total += d.numericValue));
+  let score = 0;
+  data.forEach((d) => {
+    total += d.numericValue;
+    score = +d.score;
+  });
 
   return {
     title: data[0].title,
