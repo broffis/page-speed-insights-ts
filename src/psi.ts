@@ -1,7 +1,7 @@
 import readline from "readline-sync";
 
 import { apiCall } from "./api-call";
-import { ContainedLighthouseData } from "./types";
+import { ContainedLighthouseData, ReportData } from "./types";
 import { calculateValues } from "./calculate";
 
 const pages = {
@@ -15,7 +15,7 @@ const devices = {
 
 export type Device = "MOBILE" | "DESKTOP";
 
-const run = async () => {
+const run = async (): Promise<ReportData> => {
   const times = parseInt(
     readline.question(
       "How many times do you want to run the test? (Max of 10): "
@@ -82,7 +82,7 @@ const run = async () => {
   } while (i < times);
   const output = calculateValues(totalData);
   console.log(output);
-  return;
+  return output;
 };
 
 run();
