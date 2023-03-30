@@ -31,11 +31,11 @@ const calculateMetricValue = (data) => {
   });
 
   return {
-    title: data[0].title,
+    title: data[0].title || "",
     runs: data.length,
     totalValue: total,
     averageValue: total / data.length,
-    numericUnit: data[0].numericUnit,
+    numericUnit: data[0].numericUnit || "",
   };
 };
 
