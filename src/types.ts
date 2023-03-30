@@ -14,6 +14,7 @@ export type ContainedLighthouseData = {
   cumulativeLayoutShift: DataRunOutput[];
   timeToFirstByte: DataRunOutput[];
   totalBlockingTime: DataRunOutput[];
+  speedIndex: DataRunOutput[];
 };
 
 export type LighthouseData = {
@@ -25,6 +26,7 @@ export type LighthouseData = {
   cumulativeLayoutShift: DataRunOutput;
   timeToFirstByte: DataRunOutput;
   totalBlockingTime: DataRunOutput;
+  speedIndex: DataRunOutput;
 };
 
 export type DataRunOutput = {
@@ -47,6 +49,7 @@ export type ReportData = {
   cumulativeLayoutShift: CalculatedReportData;
   timeToFirstByte: CalculatedReportData;
   totalBlockingTime: CalculatedReportData;
+  speedIndex: CalculatedReportData;
 };
 
 export type CalculatedReportData = {
@@ -57,7 +60,7 @@ export type CalculatedReportData = {
   numericUnit: NumericUnit;
 };
 
-type MetricLabel = "FCP" | "LCP" | "TTI" | "FID" | "CLS" | "TFB" | "TBT";
+type MetricLabel = "FCP" | "LCP" | "TTI" | "FID" | "CLS" | "TFB" | "TBT" | "SI";
 type DisplayValue = "ms" | "s" | null;
 
 export type ReadableMetric = {
@@ -65,7 +68,7 @@ export type ReadableMetric = {
   displayValue: DisplayValue;
 };
 
-enum MetricLabels {
+enum MetricLabelsEnum {
   FCP = "FCP",
   LCP = "LCP",
   TTI = "TTI",
@@ -73,6 +76,7 @@ enum MetricLabels {
   CLS = "CLS",
   TFB = "TFB",
   TBT = "TBT",
+  SI = "SI",
 }
 
 export type ReadableMetrics = {
@@ -86,10 +90,11 @@ export type MetricName =
   | "firstInputDelay"
   | "cumulativeLayoutShift"
   | "timeToFirstByte"
-  | "totalBlockingTime";
+  | "totalBlockingTime"
+  | "speedIndex";
 
 export type FormattedOutput = {
-  [key in MetricLabels]: string;
+  [key in MetricLabelsEnum]: string;
 };
 
 export type FormattedTotalsReturn = FormattedOutput & {

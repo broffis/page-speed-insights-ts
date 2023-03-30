@@ -25,7 +25,8 @@ export const apiCall = async (
           firstInputDelay = audits["max-potential-fid"],
           cumulativeLayoutShift = audits["cumulative-layout-shift"],
           timeToFirstByte = audits["server-response-time"],
-          totalBlockingTime = audits["total-blocking-time"];
+          totalBlockingTime = audits["total-blocking-time"],
+          speedIndex = audits["speed-index"];
 
         return {
           firstContentfulPaint,
@@ -35,6 +36,7 @@ export const apiCall = async (
           cumulativeLayoutShift,
           timeToFirstByte,
           totalBlockingTime,
+          speedIndex,
         };
       }
       return null;

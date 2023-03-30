@@ -20,6 +20,7 @@ export const calculateValues = (
     totalBlockingTime: tbt,
     cumulativeLayoutShift: cls,
     firstInputDelay: fid,
+    speedIndex: si,
   } = data;
 
   return formatTotals({
@@ -31,6 +32,7 @@ export const calculateValues = (
     cumulativeLayoutShift: calculateMetricValue(cls),
     timeToFirstByte: calculateMetricValue(tfb),
     totalBlockingTime: calculateMetricValue(tbt),
+    speedIndex: calculateMetricValue(si),
   });
 };
 
@@ -78,6 +80,10 @@ const readableMetrics: ReadableMetrics = {
     label: "TBT",
     displayValue: "ms",
   },
+  speedIndex: {
+    label: "SI",
+    displayValue: "s",
+  },
 };
 
 export const formatTotals = (data: ReportData): FormattedTotalsReturn => {
@@ -90,6 +96,7 @@ export const formatTotals = (data: ReportData): FormattedTotalsReturn => {
     cumulativeLayoutShift,
     timeToFirstByte,
     totalBlockingTime,
+    speedIndex,
   } = data;
   return {
     url: id,
@@ -100,6 +107,7 @@ export const formatTotals = (data: ReportData): FormattedTotalsReturn => {
     CLS: makeReadableTotal(cumulativeLayoutShift, "cumulativeLayoutShift"),
     TFB: makeReadableTotal(timeToFirstByte, "timeToFirstByte"),
     TBT: makeReadableTotal(totalBlockingTime, "totalBlockingTime"),
+    SI: makeReadableTotal(speedIndex, "speedIndex"),
   };
 };
 

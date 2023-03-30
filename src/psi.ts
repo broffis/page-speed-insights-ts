@@ -3,7 +3,6 @@ import readline from "readline-sync";
 import { apiCall } from "./api-call";
 import { ContainedLighthouseData, FormattedTotalsReturn } from "./types";
 import { calculateValues } from "./calculate";
-import { time } from "console";
 
 const pages = {
   showroom: "/showroom",
@@ -80,6 +79,7 @@ const run = async (): Promise<FormattedTotalsReturn | null> => {
     cumulativeLayoutShift: [],
     timeToFirstByte: [],
     totalBlockingTime: [],
+    speedIndex: [],
   };
 
   let i = 0;
@@ -94,6 +94,7 @@ const run = async (): Promise<FormattedTotalsReturn | null> => {
         totalBlockingTime,
         cumulativeLayoutShift,
         firstInputDelay,
+        speedIndex,
       } = apiData;
 
       totalData.firstContentfulPaint.push(firstContentfulPaint);
@@ -103,6 +104,7 @@ const run = async (): Promise<FormattedTotalsReturn | null> => {
       totalData.cumulativeLayoutShift.push(cumulativeLayoutShift);
       totalData.timeToFirstByte.push(timeToFirstByte);
       totalData.totalBlockingTime.push(totalBlockingTime);
+      totalData.speedIndex.push(speedIndex);
     }
     i++;
   } while (i < times);
