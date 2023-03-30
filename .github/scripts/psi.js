@@ -13,7 +13,7 @@ const devices = {
   DESKTOP: "DESKTOP",
 };
 
-module.exports = async () => {
+module.exports = async ({ core }) => {
   const times = 20;
   const selected_page_url = "/product/summary/433454"; // => get this as an env param
   const selected_device = "MOBILE"; // => get this as an env param
@@ -62,5 +62,5 @@ module.exports = async () => {
   } while (i < times);
   const output = calculateValues(totalData);
   console.log(output);
-  return output;
+  core.setOutput("psi-values", output);
 };
