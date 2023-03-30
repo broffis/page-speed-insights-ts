@@ -22,7 +22,9 @@ jobs:
         uses: actions/github-script@v6
         env:
           PAGE_SPEED_INSIGHTS_API_KEY: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY}}
+          DEVICE: "MOBILE"
+          PAGE_SLUG: "/product/summary/433454"
         with:
           script: |
             const run = require('.github/scripts/psi.js');
-            run({ github, context });
+            run({ github, context, core });

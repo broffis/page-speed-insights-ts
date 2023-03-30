@@ -15,8 +15,8 @@ const devices = {
 
 module.exports = async ({ core }) => {
   const times = 20;
-  const selected_page_url = "/product/summary/433454"; // => get this as an env param
-  const selected_device = "MOBILE"; // => get this as an env param
+  const selected_page_url = process.env.PAGE_SLUG;
+  const selected_device = process.env.DEVICE; // => get this as an env param
 
   console.log(
     `Okay, testing using url: ${selected_page_url} on ${selected_device} ${times} on times`
