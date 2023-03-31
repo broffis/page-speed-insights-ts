@@ -41,27 +41,27 @@ jobs:
           status: custom
           custom_payload: |
             {
-              "blocks": [
+              blocks: [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "${{ needs.run-psi.outputs.psi.url }}",
-                    "emoji": true
+                  type: 'header',
+                  text: {
+                    type: 'plain_text',
+                    text: '${{ needs.run-psi.outputs.psi.url }}',
+                    emoji: true
                   }
                 },
                 {
-                  "type": "section",
+                  type: 'section',
                   "fields": [
                     {
-                      "type": "plain_text",
-                      "text": "*FCP:*",
-                      "emoji": true
+                      type: 'plain_text',
+                      text: '*FCP:*',
+                      emoji: true
                     },
                     {
-                      "type": "plain_text",
-                      "text": "${{ needs.run-psi.outputs.psi.FCP }}",
-                      "emoji": true
+                      type: 'plain_text',
+                      text: '${{ needs.run-psi.outputs.psi.FCP }}',
+                      emoji: true
                     }
                   ]
                 }
