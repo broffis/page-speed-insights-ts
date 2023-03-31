@@ -73,7 +73,7 @@ runs:
                 "elements": [
                   {
                     "type": "mrkdwn",
-                    "text": "*URL:* ${{ fromJSON(needs.run-psi.outputs.psi).url }} "
+                    "text": "*URL:* ${{ fromJSON(steps.run-psi.outputs.psi).url }} "
                   },
                   {
                     "type": "mrkdwn",
