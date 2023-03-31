@@ -6,12 +6,11 @@ inputs:
     description: PACKAGES_ACCESS_TOKEN from parent workflow
     required: true
   device:
-    description: "MOBILE" or "DESKTOP"
+    description: MOBILE or DESKTOP
     required: true
   page-slug:
     description: slug for page to be tested. e.g. /showroom
     required: true
-  
 
 runs:
   using: composite
@@ -40,4 +39,3 @@ runs:
             script: |
               const run = require('.github/scripts/psi.js');
               run({ github, context, core }, { device: ${{ inputs.device }}, slug: ${{ inputs.page-slug}} });
-    
