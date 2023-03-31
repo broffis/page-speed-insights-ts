@@ -47,7 +47,7 @@ jobs:
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": ":buildcom: RBS - Package Lock Updated ",
+                    "text": "${{ fromJSON(needs.run-psi.outputs.psi).url }}",
                     "emoji": true
                   }
                 },

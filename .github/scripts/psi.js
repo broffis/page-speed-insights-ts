@@ -62,5 +62,5 @@ module.exports = async ({ core }) => {
   } while (i < times);
   const output = calculateValues(totalData);
   console.log(output);
-  core.setOutput("psi-values", output);
+  core.setOutput("psi-values", JSON.stringify(output));
 };
