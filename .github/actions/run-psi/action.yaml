@@ -68,5 +68,18 @@ runs:
                   "emoji": true
                 }
               },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*URL:* ${{ fromJSON(needs.run-psi.outputs.psi).url }} "
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Device*: Mobile"
+                  }
+                ]
+              },
             ]
           }
