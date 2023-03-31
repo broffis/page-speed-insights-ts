@@ -8,7 +8,7 @@ inputs:
   psi-token:
     description: API key for google PSI
     required: true
-  slack-webhook:
+  SLACK_WEBHOOK_URL:
     description: slack webhook url
     required: true
   device:
@@ -16,6 +16,9 @@ inputs:
     required: true
   page-slug:
     description: slug for page to be tested. e.g. /showroom
+    required: true
+  page-name:
+    description: What you want to call this page
     required: true
 
 outputs:
@@ -51,7 +54,7 @@ runs:
       id: notify
       uses: 8398a7/action-slack@v3
       env:
-        SLACK_WEBHOOK_URL: ${{ inputs.slack-webhook }}
+        SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK_URL }}
       with:
         status: custom
         custom_payload: |
@@ -61,7 +64,7 @@ runs:
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "Categories Page",
+                  "text": "${{ inputs.page-name }}",
                   "emoji": true
                 }
               },
@@ -74,7 +77,7 @@ runs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*Device*: Mobile"
+                    "text": "*Device*: ${{ inputs.device }}"
                   }
                 ]
               },

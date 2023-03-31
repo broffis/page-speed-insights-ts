@@ -14,7 +14,6 @@ const devices = {
 };
 
 module.exports = async ({ core }, { device, slug }) => {
-  console.log(" you started");
   const times = 20;
 
   console.log(
