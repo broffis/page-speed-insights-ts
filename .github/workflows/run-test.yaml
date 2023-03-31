@@ -47,7 +47,7 @@ jobs:
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "${{ fromJSON(needs.run-psi.outputs.psi).url }}",
+                    "text": "Categories Page",
                     "emoji": true
                   }
                 },
@@ -56,7 +56,11 @@ jobs:
                   "elements": [
                     {
                       "type": "mrkdwn",
-                      "text": "Make sure you run `npm ci` before continuing development"
+                      "text": "*URL*: ${{ fromJSON(needs.run-psi.outputs.psi).url }} "
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Device*: Mobile"
                     }
                   ]
                 },
