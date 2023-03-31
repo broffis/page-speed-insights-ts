@@ -12,16 +12,17 @@ inputs:
     description: slug for page to be tested. e.g. /showroom
     required: true
 
+outputs:
+  psi:
+    description: PSI outputs based on slug and device
+    value: ${{ steps.run-psi.outputs.psi-values }}
+
 runs:
   using: composite
   steps:
     - id: run-psi
       name: Run PageSpeed Insights
-      runs-on: ubuntu-latest
-      outputs:
-        psi:
-          description: PSI outputs based on slug and device
-          value: ${{ steps.run-psi.outputs.psi-values }}
+
       steps:
         - uses: actions/checkout@v3
         - uses: actions/setup-node@v3
