@@ -30,6 +30,7 @@ jobs:
             run({ github, context, core });
   notify:
     name: Notify Slack
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     needs: [run-psi]
     steps:
@@ -38,32 +39,5 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          status: custom
-          custom_payload: |
-            {
-              blocks: [
-                {
-                  type: 'header',
-                  text: {
-                    type: 'plain_text',
-                    text: '${{ needs.run-psi.outputs.psi.url }}',
-                    emoji: true
-                  }
-                },
-                {
-                  type: 'section',
-                  "fields": [
-                    {
-                      type: 'plain_text',
-                      text: '*FCP:*',
-                      emoji: true
-                    },
-                    {
-                      type: 'plain_text',
-                      text: '${{ needs.run-psi.outputs.psi.FCP }}',
-                      emoji: true
-                    }
-                  ]
-                }
-              ]
-            }
+          status: ${{ job.status }}
+          fields: repo,message,commit,author
