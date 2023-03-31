@@ -78,7 +78,7 @@ jobs:
                     },
                     {
                       "type": "plain_text",
-                      "text": "${{ fromJson(needs.run-psi.outputs.psi-values).FCP}}",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).FCP}}",
                       "emoji": true
                     }
                   ]
