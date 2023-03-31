@@ -83,7 +83,7 @@ runs:
               },
             ],
             attachments: [{
-              color: '${{ steps.run-psi.result }}' === 'success' ? 'good' : ${{ steps.run-psi.result }} === 'failure' ? 'danger' : 'warning',
+              color: '${{ steps.run-psi.result }}' == 'success' ? 'good' : ${{ steps.run-psi.result }} == 'failure' ? 'danger' : 'warning',
               fields: [
                 {
                   value: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value}} < 2.5 ? ':large_green_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }} 
