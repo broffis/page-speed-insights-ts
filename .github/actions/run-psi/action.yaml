@@ -5,6 +5,9 @@ inputs:
   packages-access-token:
     description: PACKAGES_ACCESS_TOKEN from parent workflow
     required: true
+  psi-token:
+    description: API key for google PSI
+    required: true
   device:
     description: MOBILE or DESKTOP
     required: true
@@ -36,7 +39,7 @@ runs:
       id: run-psi
       uses: actions/github-script@v6
       env:
-        PAGE_SPEED_INSIGHTS_API_KEY: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY}}
+        PAGE_SPEED_INSIGHTS_API_KEY: ${{ inputs.psi-token }}
       with:
         script: |
           const run = require('.github/scripts/psi.js');
