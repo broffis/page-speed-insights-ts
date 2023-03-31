@@ -13,17 +13,15 @@ const devices = {
   DESKTOP: "DESKTOP",
 };
 
-module.exports = async ({ core }) => {
+module.exports = async ({ core }, { device, slug }) => {
   const times = 20;
-  const selected_page_url = process.env.PAGE_SLUG;
-  const selected_device = process.env.DEVICE; // => get this as an env param
 
   console.log(
-    `Okay, testing using url: ${selected_page_url} on ${selected_device} ${times} on times`
+    `Okay, testing using url: ${slug} on ${device} ${times} on times`
   );
 
   const totalData = {
-    id: selected_page_url,
+    id: slug,
     firstContentfulPaint: [],
     largestContentfulPaint: [],
     timeToInteractive: [],
@@ -36,7 +34,7 @@ module.exports = async ({ core }) => {
 
   let i = 0;
   do {
-    const apiData = await apiCall(selected_page_url, selected_device);
+    const apiData = await apiCall(slug, device);
     if (apiData) {
       const {
         firstContentfulPaint,
@@ -62,5 +60,5 @@ module.exports = async ({ core }) => {
   } while (i < times);
   const output = calculateValues(totalData);
   console.log(output);
-  core.setOutput("psi-values", JSON.stringify(output));
+  core.setOutput("psi-values", JSON.stringify({ ...output, device: device }));
 };

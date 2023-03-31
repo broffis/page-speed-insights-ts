@@ -22,12 +22,10 @@ jobs:
         uses: actions/github-script@v6
         env:
           PAGE_SPEED_INSIGHTS_API_KEY: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY}}
-          DEVICE: "MOBILE"
-          PAGE_SLUG: "/product/summary/433454"
         with:
           script: |
             const run = require('.github/scripts/psi.js');
-            run({ github, context, core });
+            run({ github, context, core }, { device: "MOBILE", slug: "/product/summary/433454" });
   notify:
     name: Notify Slack
     if: ${{ always() }}
