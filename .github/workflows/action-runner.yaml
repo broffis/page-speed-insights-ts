@@ -16,7 +16,7 @@ jobs:
         with:
           packages-access-token: ${{ secrets.PACKAGES_ACCESS_TOKEN }}
           device: "MOBILE"
-          slug: "/product/summary/433454"
+          page-slug: "/product/summary/433454"
   notify:
     name: Notify Slack
     if: ${{ always() }}
