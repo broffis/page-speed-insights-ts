@@ -84,7 +84,7 @@ runs:
                     "fields": [
                       {
                         "type": "mrkdwn",
-                        "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value < 2.5 ? ':large_green_circle' : ':red_circle:' }}"
+                        "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }} :large_circle_green:"
                       }
                     ]
                   },
