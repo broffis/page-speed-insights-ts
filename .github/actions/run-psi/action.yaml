@@ -49,7 +49,6 @@ runs:
           await run({ github, context, core }, { device: "${{ inputs.device }}", slug: "${{ inputs.page-slug}}" });
     - name: Notify Slack
       id: notify
-      needs: [run-psi]
       uses: 8398a7/action-slack@v3
       env:
         SLACK_WEBHOOK_URL: ${{ inputs.slack-webhook }}
@@ -71,7 +70,7 @@ runs:
                 "elements": [
                   {
                     "type": "mrkdwn",
-                    "text": "*URL:* ${{ fromJSON(needs.run-psi.outputs.psi).url }} "
+                    "text": "*URL:* ${{ fromJSON(steps.run-psi.outputs.psi).url }} "
                   },
                   {
                     "type": "mrkdwn",
@@ -84,7 +83,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*FCP:* ${{ fromJson(needs.run-psi.outputs.psi).FCP}}"
+                    "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi).FCP}}"
                   }
                 ]
               },
@@ -93,7 +92,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*LCP:* ${{ fromJson(needs.run-psi.outputs.psi).LCP}}"
+                    "text": "*LCP:* ${{ fromJson(steps.run-psi.outputs.psi).LCP}}"
                   }
                 ]
               },
@@ -102,7 +101,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*TTI:* ${{ fromJson(needs.run-psi.outputs.psi).TTI}}"
+                    "text": "*TTI:* ${{ fromJson(steps.run-psi.outputs.psi).TTI}}"
                   }
                 ]
               },
@@ -111,7 +110,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*FID:* ${{ fromJson(needs.run-psi.outputs.psi).FID}}"
+                    "text": "*FID:* ${{ fromJson(steps.run-psi.outputs.psi).FID}}"
                   }
                 ]
               },
@@ -120,7 +119,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*CLS:* ${{ fromJson(needs.run-psi.outputs.psi).CLS}}"
+                    "text": "*CLS:* ${{ fromJson(steps.run-psi.outputs.psi).CLS}}"
                   }
                 ]
               },
@@ -129,7 +128,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*TFB:* ${{ fromJson(needs.run-psi.outputs.psi).TFB}}"
+                    "text": "*TFB:* ${{ fromJson(steps.run-psi.outputs.psi).TFB}}"
                   }
                 ]
               },
@@ -138,7 +137,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*TBT:* ${{ fromJson(needs.run-psi.outputs.psi).TBT}}"
+                    "text": "*TBT:* ${{ fromJson(steps.run-psi.outputs.psi).TBT}}"
                   }
                 ]
               },
@@ -147,7 +146,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*SI:* ${{ fromJson(needs.run-psi.outputs.psi).SI}}"
+                    "text": "*SI:* ${{ fromJson(steps.run-psi.outputs.psi).SI}}"
                   }
                 ]
               }
