@@ -16,7 +16,7 @@ jobs:
         with:
           packages-access-token: ${{ secrets.GITHUB_TOKEN }}
           psi-token: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
           device: MOBILE
           page-slug: /product/summary/433454
           page-name: Categories Page
