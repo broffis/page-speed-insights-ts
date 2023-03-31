@@ -75,10 +75,103 @@ jobs:
                       "type": "plain_text",
                       "text": "${{ fromJson(needs.run-psi.outputs.psi).FCP}}",
                       "emoji": true
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*LCP:*"
                     },
                     {
                       "type": "plain_text",
-                      "text": "${{ fromJson(needs.run-psi.outputs.psi).FCP}}",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).LCP}}",
+                      "emoji": true
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*TTI:*"
+                    },
+                    {
+                      "type": "plain_text",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).TTI}}",
+                      "emoji": true
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*FID:*"
+                    },
+                    {
+                      "type": "plain_text",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).FID}}",
+                      "emoji": true
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*CLS:*"
+                    },
+                    {
+                      "type": "plain_text",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).CLS}}",
+                      "emoji": true
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*TFB:*"
+                    },
+                    {
+                      "type": "plain_text",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).TFB}}",
+                      "emoji": true
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*TBT:*"
+                    },
+                    {
+                      "type": "plain_text",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).TBT}}",
+                      "emoji": true
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*SI:*"
+                    },
+                    {
+                      "type": "plain_text",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).SI}}",
                       "emoji": true
                     }
                   ]
