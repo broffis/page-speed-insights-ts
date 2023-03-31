@@ -56,7 +56,7 @@ jobs:
                   "elements": [
                     {
                       "type": "mrkdwn",
-                      "text": "*URL*: ${{ fromJSON(needs.run-psi.outputs.psi).url }} "
+                      "text": "*URL:* ${{ fromJSON(needs.run-psi.outputs.psi).url }} "
                     },
                     {
                       "type": "mrkdwn",
@@ -64,5 +64,24 @@ jobs:
                     }
                   ]
                 },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*FCP:*"
+                    },
+                    {
+                      "type": "plain_text",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi).FCP}}",
+                      "emoji": true
+                    },
+                    {
+                      "type": "plain_text",
+                      "text": "${{ fromJson(needs.run-psi.outputs.psi-values).FCP}}",
+                      "emoji": true
+                    }
+                  ]
+                }
               ]
             }
