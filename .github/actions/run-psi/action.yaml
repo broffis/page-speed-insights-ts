@@ -78,16 +78,17 @@ runs:
                   {
                     "type": "mrkdwn",
                     "text": "*Device*: Mobile"
-                  }
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value < 2.5 ? ':large_green_circle' : ':red_circle:' }}"
+                      }
+                    ]
+                  },
                 ]
               },
             ],
-            attachments: [{
-              fields: [
-                {
-                  value: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value}} < 2.5 ? ':large_green_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }}' : ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value}} >= 2.5 &&  ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value}} < 4 ?  ':large_yellow_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }}' : ':red_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }}'
-                  short: false
-                }
-              ]
-            }]
           }
