@@ -16,8 +16,8 @@ jobs:
         with:
           packages-access-token: ${{ secrets.GITHUB_TOKEN }}
           psi-token: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY }}
-          device: \"MOBILE\"
-          page-slug: \"\/product/summary/433454\"
+          device: MOBILE
+          page-slug: \/product\/summary\/433454
   notify:
     name: Notify Slack
     if: ${{ always() }}
