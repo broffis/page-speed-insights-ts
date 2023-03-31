@@ -79,7 +79,9 @@ runs:
                     "type": "mrkdwn",
                     "text": "*Device*: Mobile"
                   },
-                  {
+                ]
+              },
+              {
                     "type": "section",
                     "fields": [
                       {
@@ -88,7 +90,5 @@ runs:
                       }
                     ]
                   },
-                ]
-              },
             ],
           }
