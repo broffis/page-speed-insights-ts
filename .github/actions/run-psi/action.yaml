@@ -90,9 +90,6 @@ runs:
                       ':large_yellow_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }}'
                       : ':red_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }}'
                   short: false
-                },
-                {
-                  value: '${{ steps.run-psi.result }}'
                 }
               ]
             }]
