@@ -87,7 +87,7 @@ jobs:
                   "fields": [
                     {
                       "type": "mrkdwn",
-                      "text": "*TTI:* {{ fromJson(needs.run-psi.outputs.psi).TTI}}"
+                      "text": "*TTI:* ${{ fromJson(needs.run-psi.outputs.psi).TTI}}"
                     }
                   ]
                 },
