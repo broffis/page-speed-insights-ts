@@ -93,8 +93,13 @@ export type MetricName =
   | "totalBlockingTime"
   | "speedIndex";
 
+export type FormattedMetricOutput = {
+  value: number;
+  displayUnit: string;
+};
+
 export type FormattedOutput = {
-  [key in MetricLabelsEnum]: string;
+  [key in MetricLabelsEnum]: FormattedMetricOutput;
 };
 
 export type FormattedTotalsReturn = FormattedOutput & {

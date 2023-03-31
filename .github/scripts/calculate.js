@@ -104,16 +104,28 @@ const makeReadableTotal = (input, label) => {
   const { averageValue, numericUnit } = input;
 
   if (displayValue === "ms" && numericUnit === "millisecond") {
-    return `${averageValue.toFixed(1)} ${displayValue}`;
+    return {
+      value: Number(averageValue.toFixed(1)),
+      displayUnit: displayValue,
+    };
   }
 
   if (displayValue === "s" && numericUnit === "millisecond") {
-    return `${(averageValue / 1000).toFixed(2)} ${displayValue}`;
+    return {
+      value: Number((averageValue / 1000).toFixed(2)),
+      displayUnit: displayValue,
+    };
   }
 
   if (displayValue === null && numericUnit === "unitless") {
-    return `${averageValue.toFixed(2)}`;
+    return {
+      value: Number(averageValue.toFixed(2)),
+      displayUnit: "",
+    };
   }
 
-  return `$O_o`;
+  return {
+    value: 0,
+    displayUnit: "O_o T_T o_O",
+  };
 };

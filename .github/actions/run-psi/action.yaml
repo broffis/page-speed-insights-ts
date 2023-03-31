@@ -81,77 +81,17 @@ runs:
                   }
                 ]
               },
-              {
-                "type": "section",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP}}"
-                  }
-                ]
-              },
-              {
-                "type": "section",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*LCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).LCP}}"
-                  }
-                ]
-              },
-              {
-                "type": "section",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*TTI:* ${{ fromJson(steps.run-psi.outputs.psi-values).TTI}}"
-                  }
-                ]
-              },
-              {
-                "type": "section",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*FID:* ${{ fromJson(steps.run-psi.outputs.psi-values).FID}}"
-                  }
-                ]
-              },
-              {
-                "type": "section",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*CLS:* ${{ fromJson(steps.run-psi.outputs.psi-values).CLS}}"
-                  }
-                ]
-              },
-              {
-                "type": "section",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*TFB:* ${{ fromJson(steps.run-psi.outputs.psi-values).TFB}}"
-                  }
-                ]
-              },
-              {
-                "type": "section",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*TBT:* ${{ fromJson(steps.run-psi.outputs.psi-values).TBT}}"
-                  }
-                ]
-              },
-              {
-                "type": "section",
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*SI:* ${{ fromJson(steps.run-psi.outputs.psi-values).SI}}"
-                  }
-                ]
-              }
-            ]
+            ],
+            attachments: [{
+              color: '${{ steps.run-psi.result }}' === 'success' ? 'good' : ${{ steps.run-psi.result }} === 'failure' ? 'danger' : 'warning',
+              fields: [
+                {
+                  value: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value}} < 2.5 ? ':large_green_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }} 
+                    : ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value}} >= 2.5 &&  ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value}} < 4 ? 
+                      ':large_yellow_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }}'
+                      : ':red_circle: FCP: ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value }} ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.displayUnit }} 
+                  short: false
+                }
+              ]
+            }]
           }
