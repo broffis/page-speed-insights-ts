@@ -3,7 +3,6 @@ const fetch = require("node-fetch");
 const api_key = process.env.PAGE_SPEED_INSIGHTS_API_KEY;
 
 const setUpQuery = (slug, device) => {
-  console.log(api_key);
   const url = encodeURIComponent(`https://www.build.com${slug}`);
   const api = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
   const parameters = {

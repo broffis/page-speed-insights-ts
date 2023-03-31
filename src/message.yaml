@@ -1,0 +1,100 @@
+with:
+  status: custom
+  custom_payload: |
+    {
+      blocks: [
+        {
+          "type": "header",
+          "text": {
+            "type": "plain_text",
+            "text": "Categories Page",
+            "emoji": true
+          }
+        },
+        {
+          "type": "context",
+          "elements": [
+            {
+              "type": "mrkdwn",
+              "text": "*URL:* ${{ fromJSON(needs.run-psi.outputs.psi).url }} "
+            },
+            {
+              "type": "mrkdwn",
+              "text": "*Device*: Mobile"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": "*FCP:* ${{ fromJson(needs.run-psi.outputs.psi).FCP}}"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": "*LCP:* ${{ fromJson(needs.run-psi.outputs.psi).LCP}}"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": "*TTI:* ${{ fromJson(needs.run-psi.outputs.psi).TTI}}"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": "*FID:* ${{ fromJson(needs.run-psi.outputs.psi).FID}}"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": "*CLS:* ${{ fromJson(needs.run-psi.outputs.psi).CLS}}"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": "*TFB:* ${{ fromJson(needs.run-psi.outputs.psi).TFB}}"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": "*TBT:* ${{ fromJson(needs.run-psi.outputs.psi).TBT}}"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": "*SI:* ${{ fromJson(needs.run-psi.outputs.psi).SI}}"
+            }
+          ]
+        }
+      ]
+    }
