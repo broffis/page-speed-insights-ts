@@ -3,8 +3,8 @@ description: PageSpeed Insights Runner
 
 inputs:
   packages-access-token:
-        description: PACKAGES_ACCESS_TOKEN from parent workflow
-        required: true
+    description: PACKAGES_ACCESS_TOKEN from parent workflow
+    required: true
   device:
     description: "MOBILE" or "DESKTOP"
     required: true
