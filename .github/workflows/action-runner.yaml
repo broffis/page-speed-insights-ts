@@ -14,7 +14,7 @@ jobs:
       - uses: ./.github/actions/run-psi
         id: psi-runner
         with:
-          packages-access-token: ${{ secrets.PACKAGES_ACCESS_TOKEN }}
+          packages-access-token: ${{ secrets.GITHUB_TOKEN }}
           device: "MOBILE"
           page-slug: "/product/summary/433454"
   notify:
