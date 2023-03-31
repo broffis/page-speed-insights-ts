@@ -20,23 +20,23 @@ outputs:
 runs:
   using: composite
   steps:
-    - id: run-psi
-      name: Run PageSpeed Insights
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install
+      uses: actions/setup-node@v3
+      run: |
+        rm package*
+        cd  .github/scripts
+        npm i node-fetch@2
+      with:
+        node-version: 16
 
-      steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-node@v3
-          with:
-            node-version: 16
-        - run: |
-            rm package*
-            cd  .github/scripts
-            npm i node-fetch@2
-        - id: run-psi
-          uses: actions/github-script@v6
-          env:
-            PAGE_SPEED_INSIGHTS_API_KEY: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY}}
-          with:
-            script: |
-              const run = require('.github/scripts/psi.js');
-              run({ github, context, core }, { device: ${{ inputs.device }}, slug: ${{ inputs.page-slug}} });
+    - name: Run PageSpeed Insights
+      id: run-psi
+      uses: actions/github-script@v6
+      env:
+        PAGE_SPEED_INSIGHTS_API_KEY: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY}}
+      with:
+        script: |
+          const run = require('.github/scripts/psi.js');
+          run({ github, context, core }, { device: ${{ inputs.device }}, slug: ${{ inputs.page-slug}} });
