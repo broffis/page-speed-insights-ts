@@ -16,6 +16,7 @@ jobs:
         with:
           device: "MOBILE"
           slug: "/product/summary/433454"
+          packages-access-token: ${{ secrets.GITHUB_TOKEN}}
   notify:
     name: Notify Slack
     if: ${{ always() }}

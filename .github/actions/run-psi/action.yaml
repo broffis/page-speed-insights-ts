@@ -8,6 +8,9 @@ inputs:
   page-slug:
     description: slug for page to be tested. e.g. /showroom
     required: true
+  packages-access-token:
+        description: PACKAGES_ACCESS_TOKEN from parent workflow
+        required: true
 
 runs:
   using: composite
