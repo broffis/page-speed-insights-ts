@@ -39,5 +39,26 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          status: ${{ job.status }}
-          fields: repo,message,commit,author
+          status: custom
+          custom_payload: |
+            {
+              blocks: [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": ":buildcom: RBS - Package Lock Updated ",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "Make sure you run `npm ci` before continuing development"
+                    }
+                  ]
+                },
+              ]
+            }
