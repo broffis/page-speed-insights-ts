@@ -57,9 +57,9 @@ const readableMetrics = {
   },
 };
 
-export const GREEN_CIRCLE = ":large_green_circle:";
-export const ORANGE_DIAMOND = ":large_orange_diamond:";
-export const RED_SQUARE = ":large_red_square:";
+const GREEN_CIRCLE = ":large_green_circle:";
+const ORANGE_DIAMOND = ":large_orange_diamond:";
+const RED_SQUARE = ":large_red_square:";
 
 module.exports = {
   readableMetrics,
