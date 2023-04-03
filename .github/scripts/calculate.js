@@ -1,3 +1,10 @@
+const {
+  readableMetrics,
+  GREEN_CIRCLE,
+  ORANGE_DIAMOND,
+  RED_SQUARE,
+} = require("./constants");
+
 module.exports = (data) => {
   const {
     id,
@@ -39,41 +46,6 @@ const calculateMetricValue = (data) => {
   };
 };
 
-const readableMetrics = {
-  firstContentfulPaint: {
-    label: "FCP",
-    displayValue: "s",
-  },
-  largestContentfulPaint: {
-    label: "LCP",
-    displayValue: "s",
-  },
-  timeToInteractive: {
-    label: "TTI",
-    displayValue: "ms",
-  },
-  firstInputDelay: {
-    label: "FID",
-    displayValue: "ms",
-  },
-  cumulativeLayoutShift: {
-    label: "CLS",
-    displayValue: null,
-  },
-  timeToFirstByte: {
-    label: "TFB",
-    displayValue: "ms",
-  },
-  totalBlockingTime: {
-    label: "TBT",
-    displayValue: "ms",
-  },
-  speedIndex: {
-    label: "SI",
-    displayValue: "s",
-  },
-};
-
 const formatTotals = (data) => {
   const {
     id,
@@ -100,32 +72,40 @@ const formatTotals = (data) => {
 };
 
 const makeReadableTotal = (input, label) => {
-  const { displayValue } = readableMetrics[label];
+  const metric = readableMetrics[label];
   const { averageValue, numericUnit } = input;
+  const { displayValue } = metric;
+
+  let value;
 
   if (displayValue === "ms" && numericUnit === "millisecond") {
-    return {
-      value: Number(averageValue.toFixed(1)),
-      displayUnit: displayValue,
-    };
+    value = Number(averageValue.toFixed(1));
+    return generateSlackMessage(value, metric);
   }
 
   if (displayValue === "s" && numericUnit === "millisecond") {
-    return {
-      value: Number((averageValue / 1000).toFixed(2)),
-      displayUnit: displayValue,
-    };
+    value = Number((averageValue / 1000).toFixed(2));
+    return generateSlackMessage(value, metric);
   }
 
   if (displayValue === null && numericUnit === "unitless") {
-    return {
-      value: Number(averageValue.toFixed(2)),
-      displayUnit: "",
-    };
+    value = Number(averageValue.toFixed(2));
+    return generateSlackMessage(value, metric);
   }
 
-  return {
-    value: 0,
-    displayUnit: "O_o T_T o_O",
-  };
+  return "something went wrong";
+};
+
+const generateSlackMessage = (value, metric) => {
+  const { min, max, displayValue } = metric;
+  let slackString = `${value}${displayValue || ""} `;
+  if (value < min) {
+    slackString += GREEN_CIRCLE;
+  } else if (value < max && value >= min) {
+    slackString += ORANGE_DIAMOND;
+  } else {
+    slackString += RED_SQUARE;
+  }
+
+  return slackString;
 };

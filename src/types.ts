@@ -64,8 +64,11 @@ type MetricLabel = "FCP" | "LCP" | "TTI" | "FID" | "CLS" | "TFB" | "TBT" | "SI";
 type DisplayValue = "ms" | "s" | null;
 
 export type ReadableMetric = {
+  name: MetricName;
   label: MetricLabel;
   displayValue: DisplayValue;
+  max: number;
+  min: number;
 };
 
 enum MetricLabelsEnum {
@@ -93,13 +96,8 @@ export type MetricName =
   | "totalBlockingTime"
   | "speedIndex";
 
-export type FormattedMetricOutput = {
-  value: number;
-  displayUnit: string;
-};
-
 export type FormattedOutput = {
-  [key in MetricLabelsEnum]: FormattedMetricOutput;
+  [key in MetricLabelsEnum]: string;
 };
 
 export type FormattedTotalsReturn = FormattedOutput & {
