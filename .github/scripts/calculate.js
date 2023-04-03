@@ -33,6 +33,7 @@ module.exports = (data) => {
 
 const calculateMetricValue = (data) => {
   if (!data.length) {
+    console.log(data);
     return {
       title: "",
       runs: 0,
