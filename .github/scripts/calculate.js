@@ -97,7 +97,7 @@ const makeReadableTotal = (input, label) => {
   }
 
   return {
-    mgs: `${value}${displayValue}`,
+    msg: `${value}${displayValue}`,
     emoji: generateSlackEmoji(value, metric),
   };
 };
