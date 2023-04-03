@@ -82,13 +82,40 @@ runs:
                 ]
               },
               {
-                    "type": "section",
-                    "fields": [
-                      {
-                        "type": "mrkdwn",
-                        "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP }}"
-                      }
-                    ]
-                  },
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP }}"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*LCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).LCP }}"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*TTI:* ${{ fromJson(steps.run-psi.outputs.psi-values).TTI }}"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*FID:* ${{ fromJson(steps.run-psi.outputs.psi-values).FID }}"
+                  }
+                ]
+              },
             ],
           }
