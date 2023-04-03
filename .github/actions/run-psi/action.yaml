@@ -86,7 +86,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).FCP.emoji}} *FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.msg }}"
                   }
                 ]
               },
@@ -95,7 +95,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*LCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).LCP }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).LCP.emoji}} *LCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).LCP.msg }}"
                   }
                 ]
               },
@@ -104,7 +104,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*TTI:* ${{ fromJson(steps.run-psi.outputs.psi-values).TTI }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).TTI.emoji}} *TTI:* ${{ fromJson(steps.run-psi.outputs.psi-values).TTI.msg }}"
                   }
                 ]
               },
@@ -113,7 +113,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*FID:* ${{ fromJson(steps.run-psi.outputs.psi-values).FID }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).FIC.emoji}} *FID:* ${{ fromJson(steps.run-psi.outputs.psi-values).FID.msg }}"
                   }
                 ]
               },
@@ -122,7 +122,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*CLS:* ${{ fromJson(steps.run-psi.outputs.psi-values).CLS }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).CLS.emoji}} *CLS:* ${{ fromJson(steps.run-psi.outputs.psi-values).CLS.msg }}"
                   }
                 ]
               },
@@ -131,7 +131,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*TFB:* ${{ fromJson(steps.run-psi.outputs.psi-values).TFB }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).TFB.emoji}} *TFB:* ${{ fromJson(steps.run-psi.outputs.psi-values).TFB.msg }}"
                   }
                 ]
               },
@@ -140,7 +140,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*TBT:* ${{ fromJson(steps.run-psi.outputs.psi-values).TBT }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).TBT.emoji}} *TBT:* ${{ fromJson(steps.run-psi.outputs.psi-values).TBT.msg }}"
                   }
                 ]
               },
@@ -149,7 +149,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*SI:* ${{ fromJson(steps.run-psi.outputs.psi-values).SI }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).SI.emoji}} *SI:* ${{ fromJson(steps.run-psi.outputs.psi-values).SI.msg }}"
                   }
                 ]
               },

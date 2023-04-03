@@ -12,6 +12,7 @@ import {
   MetricName,
   ReadableMetric,
   ReportData,
+  SlackData,
 } from "./types";
 
 export const calculateValues = (
@@ -85,44 +86,38 @@ export const formatTotals = (data: ReportData): FormattedTotalsReturn => {
 const makeReadableTotal = (
   input: CalculatedReportData,
   label: MetricName
-): string => {
+): SlackData => {
   const metric = readableMetrics[label];
   const { averageValue, numericUnit } = input;
   const { displayValue } = metric;
 
-  let value: number;
+  let value = 0;
 
   if (displayValue === "ms" && numericUnit === "millisecond") {
     value = Number(averageValue.toFixed(1));
-    return generateSlackMessage(value, metric);
   }
 
   if (displayValue === "s" && numericUnit === "millisecond") {
     value = Number((averageValue / 1000).toFixed(2));
-    return generateSlackMessage(value, metric);
   }
 
   if (displayValue === null && numericUnit === "unitless") {
     value = Number(averageValue.toFixed(2));
-    return generateSlackMessage(value, metric);
   }
 
-  return "something went wrong";
+  return {
+    msg: `${value}${displayValue}`,
+    emoji: generateSlackEmoji(value, metric),
+  };
 };
 
-const generateSlackMessage = (
-  value: number,
-  metric: ReadableMetric
-): string => {
-  const { min, max, displayValue } = metric;
-  let slackString = `${value}${displayValue || ""} `;
+const generateSlackEmoji = (value: number, metric: ReadableMetric): string => {
+  const { min, max } = metric;
   if (value < min) {
-    slackString += GREEN_CIRCLE;
+    return GREEN_CIRCLE;
   } else if (value < max && value >= min) {
-    slackString += ORANGE_DIAMOND;
+    return ORANGE_DIAMOND;
   } else {
-    slackString += RED_SQUARE;
+    return RED_SQUARE;
   }
-
-  return slackString;
 };

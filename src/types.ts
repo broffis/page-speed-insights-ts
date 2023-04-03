@@ -97,7 +97,12 @@ export type MetricName =
   | "speedIndex";
 
 export type FormattedOutput = {
-  [key in MetricLabelsEnum]: string;
+  [key in MetricLabelsEnum]: SlackData;
+};
+
+export type SlackData = {
+  msg: string;
+  emoji: string;
 };
 
 export type FormattedTotalsReturn = FormattedOutput & {
