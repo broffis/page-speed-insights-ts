@@ -82,7 +82,7 @@ const makeReadableTotal = (input, label) => {
   const { averageValue, numericUnit } = input;
   const { displayValue } = metric;
 
-  let value;
+  let value = 0;
 
   if (displayValue === "ms" && numericUnit === "millisecond") {
     value = Number(averageValue.toFixed(1));
@@ -97,7 +97,7 @@ const makeReadableTotal = (input, label) => {
   }
 
   return {
-    value: `${value}${displayValue}`,
+    mgs: `${value}${displayValue}`,
     emoji: generateSlackEmoji(value, metric),
   };
 };
