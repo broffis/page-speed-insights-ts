@@ -40,12 +40,15 @@ const calculateMetricValue = (data) => {
   const title =
     data[0] && data[0].title ? data[0].title : "something went wrong";
 
+  const numericUnit =
+    data[0] && data[0].numericUnit ? data[0].numericUnit : "unitless";
+
   return {
     title,
     runs: data.length,
     totalValue: total,
     averageValue: total / data.length,
-    numericUnit: data[0].numericUnit || "",
+    numericUnit,
   };
 };
 
