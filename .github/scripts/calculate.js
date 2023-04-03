@@ -32,19 +32,27 @@ module.exports = (data) => {
 };
 
 const calculateMetricValue = (data) => {
+  if (!data.length) {
+    return {
+      title: "",
+      runs: 0,
+      totalValue: 0,
+      averageValue: 0,
+      numericUnit: "unitless",
+    };
+  }
+
   let total = 0;
   data.forEach((d) => {
     total += d.numericValue;
   });
 
-  const title = data[0].title ? data[0].title : "";
-
   return {
-    title,
+    title: data[0].title,
     runs: data.length,
     totalValue: total,
     averageValue: total / data.length,
-    numericUnit: data[0].numericUnit || "",
+    numericUnit: data[0].numericUnit,
   };
 };
 
