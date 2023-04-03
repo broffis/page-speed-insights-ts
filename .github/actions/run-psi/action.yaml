@@ -113,7 +113,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).FIC.emoji}} *FID:* ${{ fromJson(steps.run-psi.outputs.psi-values).FID.msg }}"
+                    "text": "${{ fromJson(steps.run-psi.outputs.psi-values).FID.emoji}} *FID:* ${{ fromJson(steps.run-psi.outputs.psi-values).FID.msg }}"
                   }
                 ]
               },
