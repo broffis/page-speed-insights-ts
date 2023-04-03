@@ -1,0 +1,72 @@
+{
+  "type": "section",
+  "fields": [
+    {
+      "type": "mrkdwn",
+      "text": "*FCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).FCP.value}}"
+    }
+  ]
+},
+{
+  "type": "section",
+  "fields": [
+    {
+      "type": "mrkdwn",
+      "text": "*LCP:* ${{ fromJson(steps.run-psi.outputs.psi-values).LCP.value}}"
+    }
+  ]
+},
+{
+  "type": "section",
+  "fields": [
+    {
+      "type": "mrkdwn",
+      "text": "*TTI:* ${{ fromJson(steps.run-psi.outputs.psi-values).TTI.value}}"
+    }
+  ]
+},
+{
+  "type": "section",
+  "fields": [
+    {
+      "type": "mrkdwn",
+      "text": "*FID:* ${{ fromJson(steps.run-psi.outputs.psi-values).FID.value}}"
+    }
+  ]
+},
+{
+  "type": "section",
+  "fields": [
+    {
+      "type": "mrkdwn",
+      "text": "*CLS:* ${{ fromJson(steps.run-psi.outputs.psi-values).CLS.value}}"
+    }
+  ]
+},
+{
+  "type": "section",
+  "fields": [
+    {
+      "type": "mrkdwn",
+      "text": "*TFB:* ${{ fromJson(steps.run-psi.outputs.psi-values).TFB.value}}"
+    }
+  ]
+},
+{
+  "type": "section",
+  "fields": [
+    {
+      "type": "mrkdwn",
+      "text": "*TBT:* ${{ fromJson(steps.run-psi.outputs.psi-values).TBT.value}}"
+    }
+  ]
+},
+{
+  "type": "section",
+  "fields": [
+    {
+      "type": "mrkdwn",
+      "text": "*SI:* ${{ fromJson(steps.run-psi.outputs.psi-values).SI.value}}"
+    }
+  ]
+}

@@ -1,23 +1,11 @@
-import {
+const {
+  readableMetrics,
   GREEN_CIRCLE,
   ORANGE_DIAMOND,
   RED_SQUARE,
-  readableMetrics,
-} from "./constants";
-import {
-  CalculatedReportData,
-  ContainedLighthouseData,
-  DataRunOutput,
-  FormattedTotalsReturn,
-  MetricName,
-  ReadableMetric,
-  ReportData,
-  SlackData,
-} from "./types";
+} = require("./constants");
 
-export const calculateValues = (
-  data: ContainedLighthouseData
-): FormattedTotalsReturn => {
+module.exports = (data) => {
   const {
     id,
     firstContentfulPaint: fcp,
@@ -43,7 +31,7 @@ export const calculateValues = (
   });
 };
 
-const calculateMetricValue = (data: DataRunOutput[]): CalculatedReportData => {
+const calculateMetricValue = (data) => {
   let total = 0;
   data.forEach((d) => {
     total += d.numericValue;
@@ -64,7 +52,7 @@ const calculateMetricValue = (data: DataRunOutput[]): CalculatedReportData => {
   };
 };
 
-export const formatTotals = (data: ReportData): FormattedTotalsReturn => {
+const formatTotals = (data) => {
   const {
     id,
     firstContentfulPaint,
@@ -89,10 +77,7 @@ export const formatTotals = (data: ReportData): FormattedTotalsReturn => {
   };
 };
 
-const makeReadableTotal = (
-  input: CalculatedReportData,
-  label: MetricName
-): SlackData => {
+const makeReadableTotal = (input, label) => {
   const metric = readableMetrics[label];
   const { averageValue, numericUnit } = input;
   const { displayValue } = metric;
@@ -112,12 +97,12 @@ const makeReadableTotal = (
   }
 
   return {
-    msg: `${value}${displayValue}`,
+    msg: `${value}${displayValue || ""}`,
     emoji: generateSlackEmoji(value, metric),
   };
 };
 
-const generateSlackEmoji = (value: number, metric: ReadableMetric): string => {
+const generateSlackEmoji = (value, metric) => {
   const { min, max } = metric;
   if (value < min) {
     return GREEN_CIRCLE;

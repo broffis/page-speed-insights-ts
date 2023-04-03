@@ -64,8 +64,11 @@ type MetricLabel = "FCP" | "LCP" | "TTI" | "FID" | "CLS" | "TFB" | "TBT" | "SI";
 type DisplayValue = "ms" | "s" | null;
 
 export type ReadableMetric = {
+  name: MetricName;
   label: MetricLabel;
   displayValue: DisplayValue;
+  max: number;
+  min: number;
 };
 
 enum MetricLabelsEnum {
@@ -94,7 +97,12 @@ export type MetricName =
   | "speedIndex";
 
 export type FormattedOutput = {
-  [key in MetricLabelsEnum]: string;
+  [key in MetricLabelsEnum]: SlackData;
+};
+
+export type SlackData = {
+  msg: string;
+  emoji: string;
 };
 
 export type FormattedTotalsReturn = FormattedOutput & {

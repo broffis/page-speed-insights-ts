@@ -1,0 +1,22 @@
+name: "PSI Runner"
+
+on:
+  pull_request:
+
+jobs:
+  run-psi:
+    name: Run PSI and notify slack
+    runs-on: ubuntu-latest
+    outputs:
+      psi: ${{ steps.psi-runner.outputs.psi }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/run-psi
+        id: psi-runner
+        with:
+          packages-access-token: ${{ secrets.GITHUB_TOKEN }}
+          psi-token: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY }}
+          slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          device: MOBILE
+          page-slug: /product/summary/433454
+          page-name: Categories Page
