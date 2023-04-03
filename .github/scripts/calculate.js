@@ -37,7 +37,8 @@ const calculateMetricValue = (data) => {
     total += d.numericValue;
   });
 
-  const title = data[0].title ? data[0].title : "something went wrong";
+  const title =
+    data[0] && data[0].title ? data[0].title : "something went wrong";
 
   return {
     title,
