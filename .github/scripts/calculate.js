@@ -37,8 +37,10 @@ const calculateMetricValue = (data) => {
     total += d.numericValue;
   });
 
+  const title = data[0].title ? data[0].title : "";
+
   return {
-    title: data[0].title || "",
+    title,
     runs: data.length,
     totalValue: total,
     averageValue: total / data.length,
