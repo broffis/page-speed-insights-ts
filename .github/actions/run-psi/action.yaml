@@ -117,5 +117,41 @@ runs:
                   }
                 ]
               },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*CLS:* ${{ fromJson(steps.run-psi.outputs.psi-values).CLS }}"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*TFB:* ${{ fromJson(steps.run-psi.outputs.psi-values).TFB }}"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*TBT:* ${{ fromJson(steps.run-psi.outputs.psi-values).TBT }}"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*SI:* ${{ fromJson(steps.run-psi.outputs.psi-values).SI }}"
+                  }
+                ]
+              },
             ],
           }
